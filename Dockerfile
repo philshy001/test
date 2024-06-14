@@ -1,2 +1,1 @@
-FROM php:8.2.16-apache-bullseye
-
+From k8s.gcr.io/coredns:1.6.2
