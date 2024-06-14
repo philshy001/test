@@ -7,14 +7,10 @@ on:
 
 
 env:
-  #ALIYUN_REGISTRY: "${{ secrets.ALIYUN_REGISTRY }}"
-  #ALIYUN_NAME_SPACE: "${{ secrets.ALIYUN_NAME_SPACE }}"
-  #ALIYUN_REGISTRY_USER: "${{ secrets.ALIYUN_REGISTRY_USER }}"
-  #ALIYUN_REGISTRY_PASSWORD: "${{ secrets.ALIYUN_REGISTRY_PASSWORD }}"
-  ALIYUN_REGISTRY: "registry.cn-hangzhou.aliyuncs.com"
-  ALIYUN_NAME_SPACE: "xie_hua"
-  ALIYUN_REGISTRY_USER: "1479288248@qqcom"
-  ALIYUN_REGISTRY_PASSWORD: "ps123456"
+  ALIYUN_REGISTRY: "${{ secrets.ALIYUN_REGISTRY }}"
+  ALIYUN_NAME_SPACE: "${{ secrets.ALIYUN_NAME_SPACE }}"
+  ALIYUN_REGISTRY_USER: "${{ secrets.ALIYUN_REGISTRY_USER }}"
+  ALIYUN_REGISTRY_PASSWORD: "${{ secrets.ALIYUN_REGISTRY_PASSWORD }}"
 
 jobs:
 
@@ -61,7 +57,7 @@ jobs:
 
     - name: Build and push image Aliyun
       run: |
-        docker login -u '1479288248@qq.com' -p 'ps123456' 'registry.cn-hangzhou.aliyuncs.com'
+        docker login -u $ALIYUN_REGISTRY_USER -p $ALIYUN_REGISTRY_PASSWORD $ALIYUN_REGISTRY
         # 数据预处理,判断镜像是否重名
         declare -A duplicate_images
         declare -A temp_map
@@ -142,7 +138,7 @@ jobs:
             
             # 将@sha256:等字符删除
             image_name_tag="${image_name_tag%%@*}"
-            new_image="registry.cn-hangzhou.aliyuncs.com/xie_hua/$platform_prefix$name_space_prefix$image_name_tag"
+            new_image="$ALIYUN_REGISTRY/$ALIYUN_NAME_SPACE/$platform_prefix$name_space_prefix$image_name_tag"
             echo "docker tag $image $new_image"
             docker tag $image $new_image
             echo "docker push $new_image"
