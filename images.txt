@@ -31,6 +31,4 @@ RUN docker-php-ext-install pdo_mysql
 ## install redis extension
 RUN pecl install redis && docker-php-ext-enable redis
 
-## enable rewrite module
-RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
 
