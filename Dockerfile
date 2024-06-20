@@ -36,7 +36,7 @@ RUN pecl install redis && docker-php-ext-enable redis
 ## enable rewrite module
 RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
 
-COPY D:\workspace\invoice_api\public\ziti\courier new /usr/share/fonts/truetype
-COPY D:\workspace\invoice_api\public\ziti\simkai /usr/share/fonts/truetype
-COPY D:\workspace\invoice_api\public\ziti\simsun /usr/share/fonts/truetype
+COPY ./courier new /usr/share/fonts/truetype
+COPY ./simkai /usr/share/fonts/truetype
+COPY ./simsun /usr/share/fonts/truetype
 
