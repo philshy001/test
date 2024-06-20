@@ -17,7 +17,9 @@ RUN apt-get install -y libzip-dev zip && docker-php-ext-install zip
 ## install pcntl extension
 RUN docker-php-ext-install pcntl
 
-#RUN apt-get update && apt-get install -y libxml2 libxml2-dev
+RUN apt-get update && apt-get install wkhtmltopdf
+
+RUN apt-get update && apt-get install -y libxml2 libxml2-dev
 
 ## install pcntl sockets
 RUN docker-php-ext-install sockets
@@ -33,4 +35,8 @@ RUN pecl install redis && docker-php-ext-enable redis
 
 ## enable rewrite module
 RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
+
+COPY D:\workspace\invoice_api\public\ziti\courier new /usr/share/fonts/truetype
+COPY D:\workspace\invoice_api\public\ziti\simkai /usr/share/fonts/truetype
+COPY D:\workspace\invoice_api\public\ziti\simsun /usr/share/fonts/truetype
 
