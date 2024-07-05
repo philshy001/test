@@ -110,6 +110,7 @@ jobs:
             fi
          echo "---------------2222------------------------------"
             echo "docker pull $line"
+            echo "---------------2223333333333------------------------------"
             docker pull $line
             platform=$(echo "$line" | awk -F'--platform[ =]' '{if (NF>1) print $2}' | awk '{print $1}')
             echo "platform is $platform"
