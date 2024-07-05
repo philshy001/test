@@ -11,19 +11,13 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
-      - name: Log in to Alibaba Cloud Container Registry
-        uses: alibaba/acr-cn-mirror-action@master
-        with:
-          region_id: cn-hangzhou
-          access_key_id: ${{ secrets.ACCESS_KEY_ID }}
-          access_key_secret: ${{ secrets.ACCESS_KEY_SECRET }}
-
       - name: Build the Docker image
         run: |
             docker version
             # 登录阿里云镜像仓库
             docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }} registry.cn-hangzhou.aliyuncs.com
+            cd ../../
             # 使用Dockerfile构建镜像
-            docker build . --file Dockerfile --tag registry.cn-hangzhou.aliyuncs.com/xie_hua/test-apache-php8.2:${{ github.sha }} .
+            docker build . --file Dockerfile --tag registry.cn-hangzhou.aliyuncs.com/xie_hua/test-apache-php8.2:${{ github.sha }}
             # 推送镜像到镜像仓库
             docker push registry.cn-hangzhou.aliyuncs.com/xie_hua/test-apache-php8.2:${{ github.sha }}
