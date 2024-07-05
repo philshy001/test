@@ -36,7 +36,8 @@ RUN pecl install redis && docker-php-ext-enable redis
 ## enable rewrite module
 RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
 
-COPY ./courier\ new /usr/share/fonts/truetype
+COPY ./courier new /usr/share/fonts/truetype
 COPY ./simkai /usr/share/fonts/truetype
 COPY ./simsun /usr/share/fonts/truetype
 
+x`
