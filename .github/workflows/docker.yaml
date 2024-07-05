@@ -108,7 +108,7 @@ jobs:
             if echo "$line" | grep -q '^\s*#'; then
                 continue
             fi
-        
+         echo "---------------2222------------------------------"
             echo "docker pull $line"
             docker pull $line
             platform=$(echo "$line" | awk -F'--platform[ =]' '{if (NF>1) print $2}' | awk '{print $1}')
