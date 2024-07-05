@@ -86,7 +86,8 @@ jobs:
             # 获取镜像名例如nginx
             image_name=$(echo "$image_name_tag" | awk -F':' '{print $1}')
             echo "image_name: $image_name"
-            
+            echo "=============================================================================="
+
             # 如果镜像存在于数组中，则添加temp_map
             if [[ -n "${temp_map[$image_name]}" ]]; then
                  # 如果temp_map已经存在镜像名，判断是不是同一命名空间
@@ -137,7 +138,7 @@ jobs:
                   name_space_prefix="${name_space}_"
                fi
             fi
-            echo "------------------------####################"
+           
             # 将@sha256:等字符删除
             image_name_tag="${image_name_tag%%@*}"
             new_image="$ALIYUN_REGISTRY/$ALIYUN_NAME_SPACE/$platform_prefix$name_space_prefix$image_name_tag"
