@@ -17,6 +17,8 @@ jobs:
             # 登录阿里云镜像仓库
             docker login --username=${{ secrets.ALIYUN_REGISTRY_USER }} --password=${{ secrets.ALIYUN_REGISTRY_PASSWORD }} registry.cn-hangzhou.aliyuncs.com
             # 使用Dockerfile构建镜像
+            pwd
+            ls
             docker build . --file Dockerfile --tag registry.cn-hangzhou.aliyuncs.com/xie_hua/test-apache-php8.2:${{ github.sha }}
             # 推送镜像到镜像仓库
             docker push registry.cn-hangzhou.aliyuncs.com/xie_hua/test-apache-php8.2:${{ github.sha }}
