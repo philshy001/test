@@ -17,7 +17,11 @@ RUN apt-get install -y libzip-dev zip && docker-php-ext-install zip
 ## install pcntl extension
 RUN docker-php-ext-install pcntl
 
-RUN apt-get update && apt-get install wkhtmltopdf
+#RUN apt-get update && apt-get install wkhtmltopdf
+
+RUN apt-get update && apt-get install -y \
+          wkhtmltopdf
+
 
 RUN apt-get update && apt-get install -y libxml2 libxml2-dev
 
