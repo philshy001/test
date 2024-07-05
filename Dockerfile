@@ -40,4 +40,3 @@ COPY ./courier new /usr/share/fonts/truetype
 COPY ./simkai /usr/share/fonts/truetype
 COPY ./simsun /usr/share/fonts/truetype
 
-x`
