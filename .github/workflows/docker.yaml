@@ -14,13 +14,13 @@ jobs:
       - name: Log in to Alibaba Cloud Container Registry
         uses: alibaba/acr-cn-mirror-action@master
         with:
-          region_id: cn-shanghai
+          region_id: cn-hangzhou
           access_key_id: ${{ secrets.ACCESS_KEY_ID }}
           access_key_secret: ${{ secrets.ACCESS_KEY_SECRET }}
 
       - name: Build Docker Image
         run: |
-          docker build -t registry.cn-shanghai.aliyuncs.com/xie_hua/test-apache-php8.2:${{ github.sha }} .
+          docker build -t registry.cn-hangzhou.aliyuncs.com/xie_hua/test-apache-php8.2:${{ github.sha }} .
       - name: Push Docker Image
         run: |
-          docker push registry.cn-shanghai.aliyuncs.com/xie_hua/test-apache-php8.2:${{ github.sha }}
+          docker push registry.cn-hangzhou.aliyuncs.com/xie_hua/test-apache-php8.2:${{ github.sha }}
