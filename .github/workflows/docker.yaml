@@ -20,7 +20,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t registry.cn-shanghai.aliyuncs.com/your-repo/your-image:${{ github.sha }} .
+          docker build -t registry.cn-shanghai.aliyuncs.com/xie_hua/test-apache-php8.2:${{ github.sha }} .
       - name: Push Docker Image
         run: |
           docker push registry.cn-shanghai.aliyuncs.com/xie_hua/test-apache-php8.2:${{ github.sha }}
